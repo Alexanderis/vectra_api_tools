@@ -59,7 +59,7 @@ class VectraPlatformClientV3(VectraClientV2_5):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
-            rux_tokens=rux_tokens
+            rux_tokens=rux_tokens,
             verify=verify,
         )
         self.token_headers = {
