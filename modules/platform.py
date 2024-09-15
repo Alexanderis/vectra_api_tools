@@ -44,6 +44,7 @@ class VectraPlatformClientV3(VectraClientV2_5):
         url=None,
         client_id=None,
         secret_key=None,
+        rux_tokens={},
         verify=False,
     ):
         """
@@ -58,12 +59,17 @@ class VectraPlatformClientV3(VectraClientV2_5):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
+            rux_tokens=rux_tokens
             verify=verify,
         )
         self.token_headers = {
             "Content-Type": "application/x-www-form-urlencoded",
         }
-        self._access = False
+        self._access = rux_tokens.get("_access", False)
+        self._accessTime = rux_tokens.get("_accessTime", None)
+        self._refresh = rux_tokens.get("_refresh", None)
+        self._refreshTime = rux_tokens.get("_refreshTime", None)
+
         self._check_token()
         self.verify = verify
         self.headers = {
@@ -478,6 +484,7 @@ class VectraPlatformClientV3_1(VectraPlatformClientV3):
         url=None,
         client_id=None,
         secret_key=None,
+        rux_tokens={},
         verify=False,
     ):
         """
@@ -492,6 +499,7 @@ class VectraPlatformClientV3_1(VectraPlatformClientV3):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
+            rux_tokens=rux_tokens,
             verify=verify,
         )
 
@@ -617,6 +625,7 @@ class VectraPlatformClientV3_2(VectraPlatformClientV3_1):
         url=None,
         client_id=None,
         secret_key=None,
+        rux_tokens={},
         verify=False,
     ):
         """
@@ -631,6 +640,7 @@ class VectraPlatformClientV3_2(VectraPlatformClientV3_1):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
+            rux_tokens=rux_tokens,
             verify=verify,
         )
 
@@ -674,6 +684,7 @@ class VectraPlatformClientV3_3(VectraPlatformClientV3_2):
         url=None,
         client_id=None,
         secret_key=None,
+        rux_tokens={},
         verify=False,
     ):
         """
@@ -688,6 +699,7 @@ class VectraPlatformClientV3_3(VectraPlatformClientV3_2):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
+            rux_tokens=rux_tokens,
             verify=verify,
         )
 
@@ -1283,6 +1295,7 @@ class ClientV3_latest(VectraPlatformClientV3_3):
         url=None,
         client_id=None,
         secret_key=None,
+        rux_tokens={},
         verify=False,
     ):
         """
@@ -1297,5 +1310,6 @@ class ClientV3_latest(VectraPlatformClientV3_3):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
+            rux_tokens=rux_tokens,
             verify=verify,
         )
