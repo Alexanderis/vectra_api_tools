@@ -59,12 +59,12 @@ class VectraPlatformClientV3(VectraClientV2_5):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
-            rux_tokens=rux_tokens,
             verify=verify,
         )
         self.token_headers = {
             "Content-Type": "application/x-www-form-urlencoded",
         }
+        self.rux_tokens = rux_tokens
         self._access = rux_tokens.get("_access", False)
         self._accessTime = rux_tokens.get("_accessTime", None)
         self._refresh = rux_tokens.get("_refresh", None)
@@ -499,9 +499,9 @@ class VectraPlatformClientV3_1(VectraPlatformClientV3):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
-            rux_tokens=rux_tokens,
             verify=verify,
         )
+        self.rux_tokens = rux_tokens
 
     @staticmethod
     def _generate_entity_params(args):
@@ -640,9 +640,9 @@ class VectraPlatformClientV3_2(VectraPlatformClientV3_1):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
-            rux_tokens=rux_tokens,
             verify=verify,
         )
+        self.rux_tokens = rux_tokens
 
     @staticmethod
     def _generate_group_params(args):
@@ -699,9 +699,9 @@ class VectraPlatformClientV3_3(VectraPlatformClientV3_2):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
-            rux_tokens=rux_tokens,
             verify=verify,
         )
+        self.rux_tokens = rux_tokens
 
     @staticmethod
     def _generate_host_params(args):
@@ -1310,6 +1310,6 @@ class ClientV3_latest(VectraPlatformClientV3_3):
             client_id=client_id,
             secret_key=secret_key,
             token=token,
-            rux_tokens=rux_tokens,
             verify=verify,
         )
+        self.rux_tokens = rux_tokens
