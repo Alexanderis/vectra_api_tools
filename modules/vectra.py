@@ -211,6 +211,7 @@ class VectraBaseClient(object):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None
         verify=False,
         threads=1,
     ):
@@ -240,7 +241,13 @@ class VectraBaseClient(object):
             self.token_headers = {
                 "Content-Type": "application/x-www-form-urlencoded",
             }
-            self._access = False
+            if oauth_data:
+                self._access = oauth_data.get('_access', False)
+                self._accessTime = oauth_data.get('_accessTime', False)
+                self._refresh = oauth_data.get('_refresh', False)
+                self._refreshTime = oauth_data.get('_refreshTime', False)
+            else:
+                self._access = False
             self.verify = verify
             self.base_url = url
             self.auth = (client_id, secret_key)
@@ -416,7 +423,7 @@ class VectraBaseClient(object):
         if not self._access:
             self._get_token()
         elif self._accessTime < int(time.time()):
-            if self.VERSION3 is not None:
+            if self.VERSION3 is not None and self._refresh and self._refreshTime < int(time.time()):
                 self._refresh_token()
             else:
                 self._get_token()
