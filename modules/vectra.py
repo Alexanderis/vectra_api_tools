@@ -211,7 +211,7 @@ class VectraBaseClient(object):
         url=None,
         client_id=None,
         secret_key=None,
-        oauth_data=None
+        oauth_data=None,
         verify=False,
         threads=1,
     ):
@@ -420,6 +420,7 @@ class VectraBaseClient(object):
             logging.error(f"An exception occurred: {e}")
 
     def _check_token(self):
+
         if not self._access:
             self._get_token()
         elif self._accessTime < int(time.time()):
@@ -446,8 +447,13 @@ class VectraBaseClient(object):
 
         if "headers" in kwargs.keys():
             headers = kwargs.pop("headers")
-        else:
+        elif hasattr(self, 'headers'):
             headers = self.headers
+        else:
+            headers = {
+             "Accept": "application/json",
+             "Authorization": f"Bearer {self._access}",
+             }
 
         if self.version >= 2:
             return requests.request(
@@ -2244,6 +2250,7 @@ class VectraClientV2_1(VectraBaseClient):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -2256,6 +2263,7 @@ class VectraClientV2_1(VectraBaseClient):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
@@ -2860,6 +2868,7 @@ class VectraClientV2_2(VectraClientV2_1):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -2872,6 +2881,7 @@ class VectraClientV2_2(VectraClientV2_1):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
@@ -3365,6 +3375,7 @@ class VectraClientV2_4(VectraClientV2_2):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -3377,6 +3388,7 @@ class VectraClientV2_4(VectraClientV2_2):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
@@ -3688,6 +3700,7 @@ class VectraClientV2_5(VectraClientV2_4):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -3702,6 +3715,7 @@ class VectraClientV2_5(VectraClientV2_4):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )

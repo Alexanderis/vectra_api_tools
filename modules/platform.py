@@ -38,6 +38,7 @@ class VectraPlatformClientV3(VectraClientV2_5):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -51,6 +52,7 @@ class VectraPlatformClientV3(VectraClientV2_5):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
@@ -384,6 +386,7 @@ class VectraPlatformClientV3_1(VectraPlatformClientV3):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -397,6 +400,7 @@ class VectraPlatformClientV3_1(VectraPlatformClientV3):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
@@ -525,6 +529,7 @@ class VectraPlatformClientV3_2(VectraPlatformClientV3_1):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -538,6 +543,7 @@ class VectraPlatformClientV3_2(VectraPlatformClientV3_1):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
@@ -582,6 +588,7 @@ class VectraPlatformClientV3_3(VectraPlatformClientV3_2):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -595,6 +602,7 @@ class VectraPlatformClientV3_3(VectraPlatformClientV3_2):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
@@ -1231,6 +1239,7 @@ class VectraPlatformClientV3_4(VectraPlatformClientV3_3):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -1244,6 +1253,7 @@ class VectraPlatformClientV3_4(VectraPlatformClientV3_3):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
@@ -1654,6 +1664,7 @@ class ClientV3_latest(VectraPlatformClientV3_4):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -1667,6 +1678,7 @@ class ClientV3_latest(VectraPlatformClientV3_4):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
