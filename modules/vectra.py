@@ -4063,6 +4063,7 @@ class ClientV2_latest(VectraClientV2_5):
         url=None,
         client_id=None,
         secret_key=None,
+        oauth_data=None,
         verify=False,
     ):
         """
@@ -4075,6 +4076,7 @@ class ClientV2_latest(VectraClientV2_5):
             url=url,
             client_id=client_id,
             secret_key=secret_key,
+            oauth_data=oauth_data,
             token=token,
             verify=verify,
         )
